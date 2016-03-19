@@ -4,7 +4,6 @@ using System.Collections;
 
 public class GunFire : MonoBehaviour {
 
-    public Cube.Type type_killed;
     // Use this for initialization
     void Start () {
     

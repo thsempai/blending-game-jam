@@ -23,7 +23,7 @@ public class BulletBehavior : MonoBehaviour {
         }
     }
 
-    private void Dies(){
+    public void Dies(){
         Destroy(gameObject);
     }
 }
