@@ -7,6 +7,7 @@ public class Cube : MonoBehaviour {
     public enum Part{head, body, legs}
     public Part part;
     public Type type;
+
     // Use this for initialization
     void Start () {
     string part_name = type.ToString() + '-' + part.ToString();
@@ -20,13 +21,11 @@ public class Cube : MonoBehaviour {
     
     // Update is called once per frame
     void Update () {
-    
     }
 
     public void OnCollisionEnter(Collision collision){
         BulletBehavior bulletBehavior = collision.gameObject.GetComponent<BulletBehavior>();
         if(bulletBehavior != null){
-            print("Boom");
             if(bulletBehavior.type_killed == type){
                 bulletBehavior.Dies();
                 DiesByBullet();
@@ -40,5 +39,6 @@ public class Cube : MonoBehaviour {
 
     private void Dies(){
         Destroy(gameObject);
+        transform.parent.parent.GetComponent<MonsterMove>().partDied +=1;
     }
 }
