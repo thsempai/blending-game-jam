@@ -5,31 +5,42 @@ using System.Collections.Generic;
 public class GenerateStreet : MonoBehaviour {
     public List<GameObject> streets = new List<GameObject>();
     public GameObject startStreet;
-    // Use this for initialization
-    void Start () {
-        streets.Add(startStreet);
-        for(int index=1; index<10;index++){
+    public int startStreetsForward = 10;
+    public int startStreetsBackward = 5;
+    public float offset = 30f;
+
+
+    void Start(){
+        // add start street
+        for(int index=0; index < startStreetsBackward; index++){
             AddStreet();
         }
-    
-    }
-    
-    void AddStreet(){
-        GameObject instance = Instantiate(Resources.Load("street", typeof(GameObject))) as GameObject;
-        int index = streets.Count;
-        Vector3 position = streets[index-1].transform.position;
-        instance.GetComponent<StreetBehavior>().id = index;
-        instance.GetComponent<StreetBehavior>().generator = this;
-        streets.Add(instance);
-        position.x += 30f;
-        instance.transform.position = position;
-    }
-    // Update is called once per frame
-    void Update () {
-    
+
+        streets.Add(startStreet);
+
+        for(int index=0; index < startStreetsForward; index++){
+            AddStreet();
+        }
     }
 
-    public void StreetFinish(int id){
-        AddStreet();
+    private void AddStreet(){
+        int actualIndex = streets.Count - 1;
+
+        Vector3 position;
+
+        if(actualIndex== -1){
+            position = startStreet.transform.position;
+            position.x -= startStreetsBackward * offset;
+        }
+        else{
+            position = streets[actualIndex].transform.position;
+            position.x += offset;
+        }
+
+        Quaternion rotation = startStreet.transform.rotation;
+
+        GameObject instance = Instantiate(Resources.Load("street", typeof(GameObject)), position, rotation) as GameObject;
+        streets.Add(instance);
     }
+
 }
