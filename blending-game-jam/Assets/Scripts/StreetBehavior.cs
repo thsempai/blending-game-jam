@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class StreetBehavior : MonoBehaviour {
-    public Transform collider;
     public int id;
     public GenerateStreet generator;
     // Use this for initialization

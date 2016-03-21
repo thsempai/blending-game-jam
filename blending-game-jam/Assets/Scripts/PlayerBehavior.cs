@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour {
     public GameObject player;
@@ -20,7 +21,7 @@ public class PlayerBehavior : MonoBehaviour {
             invincible -= Time.deltaTime;
         }
         else if(died){
-            Application.LoadLevel("test");
+            SceneManager.LoadScene("test");
         }
     
     }
