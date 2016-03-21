@@ -27,6 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 459068}
   - 65: {fileID: 6587738}
+  - 114: {fileID: 11470868}
   m_Layer: 0
   m_Name: street
   m_TagString: Untagged
@@ -44,12 +45,12 @@ GameObject:
   - 4: {fileID: 426554}
   - 65: {fileID: 6540906}
   m_Layer: 0
-  m_Name: collider
+  m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &417536
 Transform:
   m_ObjectHideFlags: 1
@@ -81,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 14.3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 417536}
@@ -148,8 +149,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8192539, y: 14.405823, z: 21.107414}
-  m_Center: {x: -15.870324, y: 6.7029114, z: 0.1246891}
+  m_Size: {x: 0.8192539, y: 14.405823, z: 41.09503}
+  m_Center: {x: -15.870324, y: 6.7029114, z: -0.694479}
 --- !u!65 &6587738
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -162,6 +163,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.841444, y: 12.091698, z: 45.55963}
   m_Center: {x: 12.106471, y: 5.545849, z: -0.85986423}
+--- !u!114 &11470868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ddc6d033e59d3642b5126d305fb13c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  generator: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

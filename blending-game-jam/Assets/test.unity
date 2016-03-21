@@ -411,10 +411,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   streets: []
+  streetsIdAlreayPassed: 
   startStreet: {fileID: 2115784130}
   startStreetsForward: 10
   startStreetsBackward: 5
   offset: 30
+  numberMaxOfStreet: 16
 --- !u!4 &341850501
 Transform:
   m_ObjectHideFlags: 0
@@ -1043,34 +1045,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &767432773
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 767432774}
-  m_Layer: 0
-  m_Name: monsters
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &767432774
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 767432773}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.1, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1440820398}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
 --- !u!1 &853093813 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
@@ -1263,11 +1237,11 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1252344739}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 459068, guid: 042a0b020c23c624cace4b75c4d823fe, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 14.3
       objectReference: {fileID: 0}
     - target: {fileID: 459068, guid: 042a0b020c23c624cace4b75c4d823fe, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1295,7 +1269,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 459068, guid: 042a0b020c23c624cace4b75c4d823fe, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 042a0b020c23c624cace4b75c4d823fe, type: 2}
@@ -1615,34 +1589,6 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 815611743272f64499922b21e85758c4, type: 3}
   m_PrefabInternal: {fileID: 1933325462}
---- !u!1 &1252344738
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1252344739}
-  m_Layer: 0
-  m_Name: streets
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1252344739
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1252344738}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1598385065}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
 --- !u!1001 &1258057449
 Prefab:
   m_ObjectHideFlags: 0
@@ -1652,7 +1598,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -15.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1927,11 +1873,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1440820397}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.2, y: 0, z: 4.57}
+  m_LocalPosition: {x: 20.4, y: 0, z: 4.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1238771566}
-  m_Father: {fileID: 767432774}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!195 &1440820399
 NavMeshAgent:
@@ -1978,10 +1924,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1, y: 3, z: 1.1}
   m_Center: {x: 0, y: 1.5, z: 0}
---- !u!4 &1598385065 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 459068, guid: 042a0b020c23c624cace4b75c4d823fe, type: 2}
-  m_PrefabInternal: {fileID: 957976111}
 --- !u!1001 &1933325462
 Prefab:
   m_ObjectHideFlags: 0
