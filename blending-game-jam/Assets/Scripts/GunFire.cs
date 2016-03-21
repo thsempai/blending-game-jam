@@ -5,14 +5,15 @@ using System.Collections;
 public class GunFire : MonoBehaviour {
 
     // Use this for initialization
-    Cube.Type type;
+    public Cube.Type type;
     float delay = 0f;
     public GameObject holy;
     public GameObject garlic;
     public GameObject silver;
     int index=0;
+    public AudioSource audio;
+
     void Start () {
-    
     }
 
     public void Update(){
@@ -58,6 +59,7 @@ public class GunFire : MonoBehaviour {
     }
     
     public void Fire() {
+    audio.Play();
     GameObject instance = Instantiate(Resources.Load("bullet", typeof(GameObject))) as GameObject;
     instance.transform.GetComponent<BulletBehavior>().type_killed = type;
     instance.transform.position = transform.position;

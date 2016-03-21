@@ -17,6 +17,7 @@ public class CreateMonster : MonoBehaviour {
                     case 2: cube.type = Cube.Type.vampire;break;
                     case 3: cube.type = Cube.Type.werewolf;break;
                 }
+                cube.Generate();
             }
         }
     }

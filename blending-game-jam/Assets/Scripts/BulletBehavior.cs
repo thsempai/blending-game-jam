@@ -7,6 +7,7 @@ public class BulletBehavior : MonoBehaviour {
     public float bulletSpeed = 100f;
     public Cube.Type type_killed;
     public float lifeTime = 3f;
+    public bool alreayKill = false;
 
     // Use this for initialization
     void Start () {
