@@ -28,9 +28,7 @@ public class PlayerBehavior : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other){
         GameObject monster = other.gameObject;
-            print(monster.tag);
         if(monster.tag == "Monster"){
-                print("test");
             if(invincible<=0f){
                 invincible = 2f;
                 healthPoint-=1;
@@ -42,7 +40,7 @@ public class PlayerBehavior : MonoBehaviour {
                 else{
                 hit.Play();
                 }
-                monster.transform.GetComponent<MonsterMove>().delay = 4f;
+                monster.transform.parent.parent.GetComponent<MonsterMove>().delay = 2f;
                 Vector3 direction = transform.forward*-1;
                 Rigidbody rb;
                 rb = GetComponent<Rigidbody>();
