@@ -23,9 +23,11 @@ public class GenerateStreet : MonoBehaviour {
             AddStreet();
         }
 
-        streets.Add(startStreet);
         startStreet.GetComponent<StreetBehavior>().generator = this;
+        startStreet.GetComponent<StreetBehavior>().id = streets.Count;
+        streets.Add(startStreet);
         startStreet.transform.Find("wall").gameObject.SetActive(true);
+        startStreet.GetComponent<StreetBehavior>().Initialize();
 
         for(int index=0; index < startStreetsForward; index++){
             AddStreet();
@@ -55,7 +57,7 @@ public class GenerateStreet : MonoBehaviour {
         StreetBehavior streetBehavior = instance.transform.GetComponent<StreetBehavior>();
         streetBehavior.generator = this;
         streetBehavior.id = actualIndex + 1;
-
+        streetBehavior.Initialize();
         streetCount +=1;
     }
 

@@ -413,8 +413,8 @@ MonoBehaviour:
   streets: []
   streetsIdAlreayPassed: 
   startStreet: {fileID: 2115784130}
-  startStreetsForward: 10
-  startStreetsBackward: 5
+  startStreetsForward: 0
+  startStreetsBackward: 0
   offset: 30
   numberMaxOfStreet: 16
 --- !u!4 &341850501
@@ -1865,7 +1865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1440820398
 Transform:
   m_ObjectHideFlags: 0
