@@ -961,7 +961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   partDied: 0
-  monsterFreeze: 1
+  monsterFreeze: 0
 --- !u!114 &11487248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -974,6 +974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterStatic: 0
+  monsterPart: 1
 --- !u!114 &11493006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1076,7 +1077,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: monsterFreeze
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.y
