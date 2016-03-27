@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,17 +9,25 @@ public class StreetBehavior : MonoBehaviour {
 
     public int monstersNumber = 2;
     public int side = 4;
-    private int cutting;
     public Formation formation;
     public float yMonsterPosition = 5f;
+    public int monsterPart = 1;
+    public int difficulty = 1;
     // Use this for initialization
     
     public void Initialize () {
+
+        SetParameters();
+
+        //restrict MonsterPart
+        if(monsterPart > 3) monsterPart = 3;
+        else if (monsterPart < 1) monsterPart = 1;
+
         // find nearest the power of 2
         if(side % 2 == 0){
             side--;
         }
-        cutting  = (int)Mathf.Pow(side,2);
+
         int maxMonster = 0;
 
         switch(formation){
@@ -64,8 +72,7 @@ public class StreetBehavior : MonoBehaviour {
             position.x += x * partWidth - (generator.offset - partWidth) / 2;
             position.z += z * partWidth - (generator.offset - partWidth) / 2;
 
-            GameObject instance = Instantiate(Resources.Load("monster", typeof(GameObject)), position, rotation) as GameObject;
-            instance.transform.parent = transform;
+            createMonster(position, rotation);
 
             //recompute position
             if(z == middle){
@@ -102,8 +109,7 @@ public class StreetBehavior : MonoBehaviour {
             position.x += x * partWidth - (generator.offset - partWidth) / 2;
             position.z += z * partWidth - (generator.offset - partWidth) / 2;
 
-            GameObject instance = Instantiate(Resources.Load("monster", typeof(GameObject)), position, rotation) as GameObject;
-            instance.transform.parent = transform;
+            createMonster(position, rotation);
 
             //recompute position
             if(z == middle){
@@ -128,14 +134,15 @@ public class StreetBehavior : MonoBehaviour {
         }
     }
 
-
     private void AddMonsterOnDiamond(){
         float partWidth = generator.offset/side;
         Quaternion rotation = transform.rotation;
         int middle = (int)(side/2);
         int x = middle;
         int z = middle;
-        int firstPart = monstersNumber - (int)Mathf.Pow(side/2, 2);
+        int firstPart = (int)Mathf.Pow((side + 1)/2, 2) - (int)Mathf.Pow(side/2, 2);
+        firstPart = Mathf.Min(firstPart, monstersNumber);
+
         int secondPart = monstersNumber - firstPart;
 
         for(int index=0; index < firstPart; index++){
@@ -143,8 +150,7 @@ public class StreetBehavior : MonoBehaviour {
             position.x += x * partWidth - (generator.offset - partWidth) / 2;
             position.z += z * partWidth - (generator.offset - partWidth) / 2;
 
-            GameObject instance = Instantiate(Resources.Load("monster", typeof(GameObject)), position, rotation) as GameObject;
-            instance.transform.parent = transform;
+           createMonster(position, rotation);
 
             //recompute position
             if(z == middle){
@@ -175,8 +181,7 @@ public class StreetBehavior : MonoBehaviour {
             position.x += x * partWidth - (generator.offset - partWidth) / 2;
             position.z += z * partWidth - (generator.offset - partWidth) / 2;
 
-            GameObject instance = Instantiate(Resources.Load("monster", typeof(GameObject)), position, rotation) as GameObject;
-            instance.transform.parent = transform;
+            createMonster(position, rotation);
 
             //recompute position
             if(z == middle){
@@ -212,8 +217,7 @@ public class StreetBehavior : MonoBehaviour {
             position.x += x * partWidth - (generator.offset - partWidth) / 2;
             position.z += z * partWidth - (generator.offset - partWidth) / 2;
 
-            GameObject instance = Instantiate(Resources.Load("monster", typeof(GameObject)), position, rotation) as GameObject;
-            instance.transform.parent = transform;
+            createMonster(position, rotation);
 
             //recompute position
             if(z == middle){
@@ -232,9 +236,36 @@ public class StreetBehavior : MonoBehaviour {
         }
     }
 
+    private GameObject createMonster(Vector3 position, Quaternion rotation){
+        GameObject instance = Instantiate(Resources.Load("monster", typeof(GameObject)), position, rotation) as GameObject;
+        instance.transform.parent = transform;
+        CreateMonster createMonster = instance.transform.Find("corpus").GetComponent<CreateMonster>();
+        createMonster.monsterPart = monsterPart;
+        createMonster.Initialize();
+        return instance;
+    }
+
     public void OnTriggerEnter(Collider other){
         if(other.tag == "Player"){
         generator.FinishStreet(id);
+        }
+    }
+
+    private void SetParameters(){
+        //this fonction manage gamedifficulty
+
+        if(difficulty < 1) return;
+
+        monstersNumber = Random.Range((int)(difficulty / 3), difficulty + 1);
+        monsterPart = (int)(difficulty / 4);
+
+        int index = Random.Range(0, 4);
+
+        switch(index){
+            case 0: formation = Formation.triangle;break;
+            case 1: formation = Formation.reversedTriangle;break;
+            case 2: formation = Formation.diamond;break;
+            case 3: formation = Formation.line;break;
         }
     }
 

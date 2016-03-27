@@ -124,22 +124,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 11499706, guid: 042a0b020c23c624cace4b75c4d823fe, type: 2}
-      propertyPath: monstersNumber
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 11499706, guid: 042a0b020c23c624cace4b75c4d823fe, type: 2}
-      propertyPath: cutting
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 11499706, guid: 042a0b020c23c624cace4b75c4d823fe, type: 2}
-      propertyPath: formation
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11499706, guid: 042a0b020c23c624cace4b75c4d823fe, type: 2}
-      propertyPath: side
-      value: 15
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 042a0b020c23c624cace4b75c4d823fe, type: 2}
   m_IsPrefabParent: 0
@@ -471,8 +455,8 @@ MonoBehaviour:
   streets: []
   streetsIdAlreayPassed: 
   startStreet: {fileID: 1858590130}
-  startStreetsForward: 0
-  startStreetsBackward: 0
+  startStreetsForward: 10
+  startStreetsBackward: 5
   offset: 30
   numberMaxOfStreet: 3
 --- !u!4 &341850501
@@ -1614,7 +1598,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -12.72
+      value: -7.93
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2032,7 +2016,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   Priority: 128
