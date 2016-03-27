@@ -32,14 +32,7 @@ public class PlayerBehavior : MonoBehaviour {
             if(invincible<=0f){
                 invincible = 2f;
                 healthPoint-=1;
-                if(healthPoint<=0){
-                    GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
-                    died = true;
-                    dying.Play();
-                }
-                else{
                 hit.Play();
-                }
                 monster.transform.parent.parent.GetComponent<MonsterMove>().delay = 2f;
                 Vector3 direction = transform.forward*-1;
                 Rigidbody rb;

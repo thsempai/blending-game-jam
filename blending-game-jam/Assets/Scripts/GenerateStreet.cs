@@ -11,7 +11,7 @@ public class GenerateStreet : MonoBehaviour {
     public float offset = 30f;
     public int numberMaxOfStreet = 16;
     private int streetCount = 1;
-
+    private int level = 1;
 
     void Start(){
         // add start street
@@ -20,19 +20,25 @@ public class GenerateStreet : MonoBehaviour {
         }
 
         for(int index=0; index < startStreetsBackward; index++){
-            AddStreet();
+            AddStreet(0);
         }
 
-        streets.Add(startStreet);
         startStreet.GetComponent<StreetBehavior>().generator = this;
+        startStreet.GetComponent<StreetBehavior>().id = streets.Count;
+        streets.Add(startStreet);
         startStreet.transform.Find("wall").gameObject.SetActive(true);
+        StreetBehavior startStreetBehavior = startStreet.GetComponent<StreetBehavior>();
+        startStreetBehavior.difficulty = 0;
+        startStreetBehavior.monstersNumber = 0;
+        startStreetBehavior.Initialize();
 
         for(int index=0; index < startStreetsForward; index++){
-            AddStreet();
+            AddStreet(level);
+            level++;
         }
     }
 
-    private void AddStreet(){
+    private void AddStreet(int level){
         int actualIndex = streets.Count - 1;
 
         Vector3 position;
@@ -56,6 +62,15 @@ public class GenerateStreet : MonoBehaviour {
         streetBehavior.generator = this;
         streetBehavior.id = actualIndex + 1;
 
+        if(level==0){
+            streetBehavior.monstersNumber = 0;
+            streetBehavior.side = 1;
+            streetBehavior.difficulty = 0;
+        }
+        else{
+            streetBehavior.difficulty = level;
+        }
+        streetBehavior.Initialize();
         streetCount +=1;
     }
 
@@ -72,7 +87,7 @@ public class GenerateStreet : MonoBehaviour {
         }
 
         GameObject street = streets[id];
-        AddStreet();
+        AddStreet(1);
         streetsIdAlreayPassed.Add(id);
 
         street.transform.Find("wall").gameObject.SetActive(true);
