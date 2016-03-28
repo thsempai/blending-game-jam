@@ -257,7 +257,7 @@ public class StreetBehavior : MonoBehaviour {
         if(difficulty < 1) return;
 
         monstersNumber = Random.Range((int)(difficulty / 3), difficulty + 1);
-        monsterPart = (int)(difficulty / 4);
+        monsterPart = (int)(difficulty / 3);
 
         int index = Random.Range(0, 4);
 

@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class PlayerBehavior : MonoBehaviour {
     public GameObject player;
@@ -20,6 +21,7 @@ public class PlayerBehavior : MonoBehaviour {
 
     public UnityEvent healtPointUI;
     public UnityEvent godModeUI;
+    public Text scoreText;
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -39,13 +41,18 @@ public class PlayerBehavior : MonoBehaviour {
         }
 
         int newScore = (int)((transform.position.x - xStartPosition)/10);
-        print(newScore);
         if(newScore> scoreWalk){
             scoreWalk = newScore;
         }
         score = scoreHit + scoreWalk;
+        DisplayScore();
     }
 
+    private void DisplayScore(){
+        string text = score.ToString("0000000");
+        text = "SCORE: " + text;
+        scoreText.text = text; 
+    }
 
     private void FreezeControl(){
         //isControllable = false; // disable player controls.
