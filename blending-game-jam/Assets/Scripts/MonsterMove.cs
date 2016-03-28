@@ -6,6 +6,7 @@ public class MonsterMove : MonoBehaviour {
 
     public float delay=0f;
     public int partDied=0;
+    public bool monsterFreeze = false;
     GameObject player;
     NavMeshAgent navMeshAgent;
     float speed= 3f;
@@ -14,6 +15,9 @@ public class MonsterMove : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.speed = speed;
+        if(monsterFreeze){
+            navMeshAgent.Stop();
+        }
     }
     
     // Update is called once per frame
@@ -27,7 +31,7 @@ public class MonsterMove : MonoBehaviour {
         delay -= Time.deltaTime;
         navMeshAgent.Stop();
         }
-    else{
+    else if(!monsterFreeze){
         navMeshAgent.Resume();
         navMeshAgent.destination = player.transform.position;
     }

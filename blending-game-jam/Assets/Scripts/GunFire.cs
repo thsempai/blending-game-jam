@@ -11,7 +11,7 @@ public class GunFire : MonoBehaviour {
     public GameObject garlic;
     public GameObject silver;
     int index=0;
-    public AudioSource audio;
+    public AudioSource gunSound;
 
     void Start () {
     }
@@ -59,7 +59,7 @@ public class GunFire : MonoBehaviour {
     }
     
     public void Fire() {
-    audio.Play();
+    gunSound.Play();
     GameObject instance = Instantiate(Resources.Load("bullet", typeof(GameObject))) as GameObject;
     instance.transform.GetComponent<BulletBehavior>().type_killed = type;
     instance.transform.position = transform.position;

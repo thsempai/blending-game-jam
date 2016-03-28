@@ -134,6 +134,7 @@ MonoBehaviour:
   bulletSpeed: 2000
   type_killed: 1
   lifeTime: 3
+  alreayKill: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
