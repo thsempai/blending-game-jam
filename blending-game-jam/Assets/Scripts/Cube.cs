@@ -50,6 +50,7 @@ public class Cube : MonoBehaviour {
             }
             else{
                 fail.Play();
+                bulletBehavior.Dies();
             }
         }
     }
@@ -72,6 +73,7 @@ public class Cube : MonoBehaviour {
     }
 
     private void Dies(){
+        GameObject.FindGameObjectWithTag("Player").transform.GetComponent<PlayerBehavior>().scoreHit += 1;
         Destroy(gameObject);
     }
 }
