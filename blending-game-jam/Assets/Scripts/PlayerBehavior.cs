@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerBehavior : MonoBehaviour {
     public GameObject player;
@@ -26,18 +27,32 @@ public class PlayerBehavior : MonoBehaviour {
     
     }
 
-    public void OnTriggerEnter(Collider other){
+
+    private void FreezeControl(){
+        //isControllable = false; // disable player controls.
+        GetComponent<FirstPersonController>().enabled = false;
+    }
+
+    public void OnTriggerStay(Collider other){
         GameObject monster = other.gameObject;
         if(monster.tag == "Monster"){
-            if(invincible<=0f){
+            if(invincible<=0f && !died){
                 invincible = 2f;
                 healthPoint-=1;
-                hit.Play();
+                if(healthPoint <= 0){
+                    dying.Play();
+                    died = true;
+                    FreezeControl();
+                }
+                else{
+                    hit.Play();
+                }
                 monster.transform.parent.parent.GetComponent<MonsterMove>().delay = 2f;
-                Vector3 direction = transform.forward*-1;
+                /*Vector3 direction = transform.forward*-1;
                 Rigidbody rb;
                 rb = GetComponent<Rigidbody>();
-                rb.AddForce(direction * repulsionPower);
+                rb.AddRelativeForce(direction * repulsionPower);*/
+
                 }
             }
     }
