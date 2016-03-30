@@ -20,6 +20,9 @@ public class Cube : MonoBehaviour {
 
     public void Generate(){
         string part_name = type.ToString() + '-' + part.ToString();
+        if (type == Type.werewolf && part == Part.head){
+            if(Random.Range(0,100) == 0) part_name += "-special";
+        }
         for(int index=0; index < transform.childCount; index++) {
             Transform child = transform.GetChild(index);
             Texture texture =  Resources.Load(part_name) as Texture;
