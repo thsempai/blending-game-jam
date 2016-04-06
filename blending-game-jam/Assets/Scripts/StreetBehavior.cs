@@ -14,6 +14,8 @@ public class StreetBehavior : MonoBehaviour {
     public int monsterPart = 1;
     public int difficulty = 1;
     // Use this for initialization
+
+    public float areaWidth = 30f;
     
     public void Initialize () {
 
@@ -61,7 +63,7 @@ public class StreetBehavior : MonoBehaviour {
     }
 
     private void AddMonsterOnTriangle(){
-        float partWidth = generator.offset/side;
+        float partWidth = areaWidth/side;
         Quaternion rotation = transform.rotation;
         int middle = (int)(side/2);
         int x = middle;
@@ -69,8 +71,8 @@ public class StreetBehavior : MonoBehaviour {
 
         for(int index=0; index < monstersNumber; index++){
             Vector3 position = transform.position;
-            position.x += x * partWidth - (generator.offset - partWidth) / 2;
-            position.z += z * partWidth - (generator.offset - partWidth) / 2;
+            position.x += x * partWidth - (areaWidth - partWidth) / 2;
+            position.z += z * partWidth - (areaWidth - partWidth) / 2;
 
             createMonster(position, rotation);
 
@@ -98,7 +100,7 @@ public class StreetBehavior : MonoBehaviour {
     }
 
     private void AddMonsterOnReversedTriangle(){
-        float partWidth = generator.offset/side;
+        float partWidth = areaWidth/side;
         Quaternion rotation = transform.rotation;
         int middle = (int)(side/2);
         int x = middle * 2;
@@ -106,8 +108,8 @@ public class StreetBehavior : MonoBehaviour {
 
         for(int index=0; index < monstersNumber; index++){
             Vector3 position = transform.position;
-            position.x += x * partWidth - (generator.offset - partWidth) / 2;
-            position.z += z * partWidth - (generator.offset - partWidth) / 2;
+            position.x += x * partWidth - (areaWidth - partWidth) / 2;
+            position.z += z * partWidth - (areaWidth - partWidth) / 2;
 
             createMonster(position, rotation);
 
@@ -135,7 +137,7 @@ public class StreetBehavior : MonoBehaviour {
     }
 
     private void AddMonsterOnDiamond(){
-        float partWidth = generator.offset/side;
+        float partWidth = areaWidth/side;
         Quaternion rotation = transform.rotation;
         int middle = (int)(side/2);
         int x = middle;
@@ -147,8 +149,8 @@ public class StreetBehavior : MonoBehaviour {
 
         for(int index=0; index < firstPart; index++){
             Vector3 position = transform.position;
-            position.x += x * partWidth - (generator.offset - partWidth) / 2;
-            position.z += z * partWidth - (generator.offset - partWidth) / 2;
+            position.x += x * partWidth - (areaWidth - partWidth) / 2;
+            position.z += z * partWidth - (areaWidth - partWidth) / 2;
 
            createMonster(position, rotation);
 
@@ -178,8 +180,8 @@ public class StreetBehavior : MonoBehaviour {
 
         for(int index=0; index < secondPart; index++){
             Vector3 position = transform.position;
-            position.x += x * partWidth - (generator.offset - partWidth) / 2;
-            position.z += z * partWidth - (generator.offset - partWidth) / 2;
+            position.x += x * partWidth - (areaWidth - partWidth) / 2;
+            position.z += z * partWidth - (areaWidth - partWidth) / 2;
 
             createMonster(position, rotation);
 
@@ -206,7 +208,7 @@ public class StreetBehavior : MonoBehaviour {
     }
 
     private void AddMonsterOnline(){
-        float partWidth = generator.offset/side;
+        float partWidth = areaWidth/side;
         Quaternion rotation = transform.rotation;
         int middle = (int)(side/2);
         int x = middle;
@@ -214,8 +216,8 @@ public class StreetBehavior : MonoBehaviour {
 
         for(int index=0; index < monstersNumber; index++){
             Vector3 position = transform.position;
-            position.x += x * partWidth - (generator.offset - partWidth) / 2;
-            position.z += z * partWidth - (generator.offset - partWidth) / 2;
+            position.x += x * partWidth - (areaWidth - partWidth) / 2;
+            position.z += z * partWidth - (areaWidth - partWidth) / 2;
 
             createMonster(position, rotation);
 
@@ -256,9 +258,10 @@ public class StreetBehavior : MonoBehaviour {
 
         if(difficulty < 1) return;
 
-        monstersNumber = Random.Range((int)(difficulty / 3), difficulty + 1);
-        monsterPart = (int)(difficulty / 3);
+        monstersNumber = Random.Range((int)((difficulty-1) * 2 + 3), difficulty *3 + 1);
+        monsterPart = (int)(difficulty / 2.5);
 
+        if (monstersNumber < 5) side = monstersNumber;
         int index = Random.Range(0, 4);
 
         switch(index){

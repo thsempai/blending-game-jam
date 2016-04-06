@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Cube : MonoBehaviour {
 
-    public enum Type{vampire, zombie, werewolf};
+    public enum Type{vampire, zombie, werewolf, player};
     public enum Part{head, body, legs}
     public Part part;
     public Type type;
@@ -11,15 +11,19 @@ public class Cube : MonoBehaviour {
     public AudioSource fail;
     public AudioSource die;
     float die_delay = 0f;
-    bool died = false;
+    public bool died = false;
+    public bool autoGenerate = false;
 
     // Use this for initialization
     void Start () {
-
+        if(autoGenerate) Generate();
     }
 
     public void Generate(){
         string part_name = type.ToString() + '-' + part.ToString();
+        if (type == Type.werewolf && part == Part.head){
+            if(Random.Range(0,100) == 0) part_name += "-special";
+        }
         for(int index=0; index < transform.childCount; index++) {
             Transform child = transform.GetChild(index);
             Texture texture =  Resources.Load(part_name) as Texture;

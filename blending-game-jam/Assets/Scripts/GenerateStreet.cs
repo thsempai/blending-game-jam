@@ -10,10 +10,12 @@ public class GenerateStreet : MonoBehaviour {
     public int startStreetsBackward = 5;
     public float offset = 30f;
     public int numberMaxOfStreet = 16;
+    public bool resetScore = false;
     private int streetCount = 1;
     private int level = 1;
 
     void Start(){
+        if(resetScore) PlayerPrefs.SetInt("hightest score", 0);
         // add start street
         if (numberMaxOfStreet < startStreetsForward + startStreetsBackward + 1){
             numberMaxOfStreet = startStreetsForward + startStreetsBackward + 1;
