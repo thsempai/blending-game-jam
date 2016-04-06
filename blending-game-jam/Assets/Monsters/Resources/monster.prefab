@@ -906,6 +906,7 @@ MonoBehaviour:
   fail: {fileID: 8200700}
   die: {fileID: 8296910}
   died: 0
+  autoGenerate: 0
 --- !u!114 &11455112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -922,6 +923,7 @@ MonoBehaviour:
   fail: {fileID: 8288166}
   die: {fileID: 8262848}
   died: 0
+  autoGenerate: 0
 --- !u!114 &11475792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -938,6 +940,7 @@ MonoBehaviour:
   fail: {fileID: 8211928}
   die: {fileID: 8229760}
   died: 0
+  autoGenerate: 0
 --- !u!114 &11477728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -967,7 +970,7 @@ MonoBehaviour:
   distanceReact: 65
   monsterFreeze: 0
   playerNearest: 0
-  speed: 6
+  speed: 4.5
 --- !u!114 &11487248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1111,7 +1114,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: speed
-      value: 6
+      value: 4.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
