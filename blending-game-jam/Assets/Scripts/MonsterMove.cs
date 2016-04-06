@@ -6,22 +6,29 @@ public class MonsterMove : MonoBehaviour {
 
     public float delay=0f;
     public int partDied=0;
+    public float distanceReact;
     public bool monsterFreeze = false;
+    public bool playerNearest = false;
     GameObject player;
     NavMeshAgent navMeshAgent;
-    float speed= 3f;
+    public float speed= 3f;
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.speed = speed;
-        if(monsterFreeze){
-            navMeshAgent.Stop();
-        }
+        navMeshAgent.Stop();
     }
     
     // Update is called once per frame
     void Update () {
+    float distancePlayer = Vector3.Distance(player.transform.position, transform.position);
+    if(distanceReact > distancePlayer){
+        if(!monsterFreeze){
+            playerNearest = true;
+            }
+        }
+
     if(partDied>= 3){
         Dies();
         return;
@@ -31,7 +38,7 @@ public class MonsterMove : MonoBehaviour {
         delay -= Time.deltaTime;
         navMeshAgent.Stop();
         }
-    else if(!monsterFreeze){
+    else if(!monsterFreeze && playerNearest){
         navMeshAgent.Resume();
         navMeshAgent.destination = player.transform.position;
     }

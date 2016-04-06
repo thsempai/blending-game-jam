@@ -37,7 +37,7 @@ public class PlayerBehavior : MonoBehaviour {
             invincible -= Time.deltaTime;
         }
         else if(died){
-            SceneManager.LoadScene("test");
+            SceneManager.LoadScene("score");
         }
 
         int newScore = (int)((transform.position.x - xStartPosition)/10);
@@ -62,6 +62,7 @@ public class PlayerBehavior : MonoBehaviour {
     public void OnTriggerStay(Collider other){
         GameObject monster = other.gameObject;
         if(monster.tag == "Monster"){
+            if(monster.GetComponent<Cube>().died) return;
             if(invincible<=0f && !died && !godMode){
                 invincible = 2f;
                 healthPoint-=1;
@@ -69,6 +70,7 @@ public class PlayerBehavior : MonoBehaviour {
                 if(healthPoint <= 0){
                     dying.Play();
                     died = true;
+                    PlayerPrefs.SetInt("score", score);
                     FreezeControl();
                 }
                 else{

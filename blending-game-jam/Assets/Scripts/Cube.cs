@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Cube : MonoBehaviour {
 
-    public enum Type{vampire, zombie, werewolf};
+    public enum Type{vampire, zombie, werewolf, player};
     public enum Part{head, body, legs}
     public Part part;
     public Type type;
@@ -11,11 +11,12 @@ public class Cube : MonoBehaviour {
     public AudioSource fail;
     public AudioSource die;
     float die_delay = 0f;
-    bool died = false;
+    public bool died = false;
+    public bool autoGenerate = false;
 
     // Use this for initialization
     void Start () {
-
+        if(autoGenerate) Generate();
     }
 
     public void Generate(){

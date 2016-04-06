@@ -905,6 +905,7 @@ MonoBehaviour:
   type: 1
   fail: {fileID: 8200700}
   die: {fileID: 8296910}
+  died: 0
 --- !u!114 &11455112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -920,6 +921,7 @@ MonoBehaviour:
   type: 1
   fail: {fileID: 8288166}
   die: {fileID: 8262848}
+  died: 0
 --- !u!114 &11475792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -935,6 +937,7 @@ MonoBehaviour:
   type: 1
   fail: {fileID: 8211928}
   die: {fileID: 8229760}
+  died: 0
 --- !u!114 &11477728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -961,7 +964,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   partDied: 0
-  monsterFreeze: 1
+  distanceReact: 65
+  monsterFreeze: 0
+  playerNearest: 0
+  speed: 6
 --- !u!114 &11487248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1035,7 +1041,7 @@ NavMeshAgent:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177620}
   m_Enabled: 1
-  m_Radius: 1
+  m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -1077,7 +1083,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: monsterFreeze
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.y
@@ -1086,6 +1092,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: distanceReact
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Speed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Acceleration
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
