@@ -22,8 +22,17 @@ public class Cube : MonoBehaviour {
     public void Generate(){
         string part_name = type.ToString() + '-' + part.ToString();
         if (type == Type.werewolf && part == Part.head){
-            if(Random.Range(0,100) == 0) part_name += "-special";
+            if(Random.Range(0,30) == 0) part_name += "-special";
         }
+        else if(type==Type.zombie){
+            if(part == Part.head){
+                if(Random.Range(0,30) == 0) part_name += "-hq";
+                }
+            if(part == Part.body){
+                    if(Random.Range(0, 30) == 0) part_name += "-special";
+                }
+            }
+
         for(int index=0; index < transform.childCount; index++) {
             Transform child = transform.GetChild(index);
             Texture texture =  Resources.Load(part_name) as Texture;
