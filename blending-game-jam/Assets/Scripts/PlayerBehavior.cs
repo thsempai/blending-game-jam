@@ -14,10 +14,12 @@ public class PlayerBehavior : MonoBehaviour {
     public AudioSource dying;
     public bool died = false;
     public bool godMode = false;
+    private float damageTime = 0f;
     private float xStartPosition;
     public int scoreWalk;
     public int scoreHit;
     public int score;
+    public RawImage damageUI;
 
     public UnityEvent healtPointUI;
     public UnityEvent godModeUI;
@@ -38,6 +40,17 @@ public class PlayerBehavior : MonoBehaviour {
         }
         else if(died){
             SceneManager.LoadScene("score");
+        }
+
+        if (damageTime > 0){
+            damageTime -= Time.deltaTime;
+        }
+
+        if (damageTime > 0){
+            damageUI.enabled = true;
+        }
+        else if(!died){
+            damageUI.enabled = false;
         }
 
         int newScore = (int)((transform.position.x - xStartPosition)/10);
@@ -64,10 +77,12 @@ public class PlayerBehavior : MonoBehaviour {
         if(monster.tag == "Monster"){
             if(monster.GetComponent<Cube>().died) return;
             if(invincible<=0f && !died && !godMode){
+                damageTime = 0.2f;
                 invincible = 2f;
                 healthPoint-=1;
                 healtPointUI.Invoke();
                 if(healthPoint <= 0){
+                    invincible = 2.5f;
                     dying.Play();
                     died = true;
                     PlayerPrefs.SetInt("score", score);
